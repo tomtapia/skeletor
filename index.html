@@ -1,0 +1,63 @@
+<html ng-controller="mainController"><head>
+	<title>{{app.title}}</title>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="css/angular-tabs.css">
+</head>
+<body>
+	<!-- Menu -->
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#/">
+					{{app.title}}
+				</a>
+			</div>
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<ul class="nav navbar-nav">
+					<li ng-repeat="menu in menus">
+						<a href="#" ng-click="addTab(menu)">{{menu.name}}</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<!-- Onde será carregada a view -->
+	<div class="container">
+		<div>
+
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" ng-repeat="tab in tabs" ng-class="{active: tab.active}"><a href="#" ng-click="activeMe(tab)">{{tab.name}}<button ng-click="close(tab)" class="close">x</button></a></li>
+			</ul>
+
+			<!-- Tab panes -->
+			<div class="tab-content">
+				<div role="tabpanel" ng-repeat="tab in tabs" class="tab-pane" ng-class="{active: tab.active}" id="home" ng-include="'views/'+tab.view">
+					
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- jQuery -->
+	<script>window.$ = window.jQuery = require('jquery');</script>
+
+	<!-- Bootstrap -->
+	<script src="bootstrap/js/bootstrap.js"></script>
+
+	<!-- Angular -->
+	<script src="node_modules/angular/angular.js"></script>
+	<!-- Angular - Pagination -->
+	<script src="node_modules/angular-utils-pagination/dirPagination.js"></script>
+
+	<!-- App -->
+	<script src="app/app.js"></script>
+
+	<!-- Controllers -->
+	<script src="controllers/homeController.js"></script>
+	<script src="controllers/mainController.js"></script>
+
+	<!-- Angular Bootstrap -->
+	<script src="app/angular.bootstrap.js"></script>
+
+</body></html>
